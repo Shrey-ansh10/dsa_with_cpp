@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std; 
 
-/* similar to Leetcode 401
+/* similar to Leetcode 410
 
 Q. Book Allocation Problem
 Given an array of books with number of pages in each book at every index. N = number of books = arr.size(), 
