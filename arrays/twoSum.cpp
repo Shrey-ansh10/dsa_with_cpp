@@ -13,23 +13,47 @@ using namespace std;
 
 
 vector<int> twoSum(vector<int>& nums, int target) {
-        int size = nums.size();
-        int i=0;
-        int j = size-1;
-        vector<int> returnVal;
+
+        // hashmap approach
+            unordered_map<int, int> m;
+    
+            vector<int> ans;
+    
+            for(int i=0; i<arr.size(); i++){
+                int first = arr[i];
         
-            while(i<j){    
-                int sum = nums[i]+nums[j];
-                    if(sum > target){
-                        j--;
-                    } else if(sum<target){
-                        i++;
-                    } else{
-                        returnVal.push_back(i);
-                        returnVal.push_back(j);
-                        return returnVal;
-                    }
+                int sec = tar-first;
+                if(m.find(sec) != m.end()) {
+                    ans.push_back(i);
+                    ans.push_back(m[sec]);
+                    break;
+                }
+        
+                m[first] = i;
             }
+    
+            return ans;
+
+
+        
+        // // Two-pointer approach - (Only works when we want to return the values itself, not the index)
+        // int size = nums.size();
+        // int i=0;
+        // int j = size-1;
+        // vector<int> returnVal;
+        
+        //     while(i<j){    
+        //         int sum = nums[i]+nums[j];
+        //             if(sum > target){
+        //                 j--;
+        //             } else if(sum<target){
+        //                 i++;
+        //             } else{
+        //                 returnVal.push_back(i);
+        //                 returnVal.push_back(j);
+        //                 return returnVal;
+        //             }
+        //     }
             
             
             
@@ -45,18 +69,23 @@ vector<int> twoSum(vector<int>& nums, int target) {
             // }
 
         //}
-        return returnVal;
+        //return returnVal;
     }
 
 
 int main() {
     
-    vector<int> nums = {2, 11, 7,15};
-    int target = 9;
-    
-    vector<int> ans = twoSum(nums, target);
-    cout << ans[0] << " "<< ans[1] << endl;
+    vector<int> a = {3,2,4};
+    int tar = 17;
+    std::vector<int> result = twoSum(a, tar);
 
-    return 0; 
+    // Check if a solution was found and print the result
+    if (!result.empty()) {
+        std::cout << "Indices: " << result[0] << ", " << result[1] << std::endl;
+    } else {
+        std::cout << "No solution found." << std::endl;
+    }
+
+    return 0;
 } 
 // Time complexity: O(n)
