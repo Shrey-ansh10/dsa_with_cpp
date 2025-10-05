@@ -4,7 +4,10 @@
 #include <bits/stdc++.h>
 using namespace std;  
    
-    void uniquePermutations(vector<int>& nums, int idx, vector<vector<int>>& ans) {
+
+// Approach 1: create a set, to track used elements at each recursion level
+// Time Complexity: O(n * n!) - n! permutations and O(n) time to
+    void uniquePermutations1(vector<int>& nums, int idx, vector<vector<int>>& ans) {
         if (idx == nums.size()) {
             ans.push_back(nums);
             for(auto i: nums) cout << i << " ";
@@ -32,13 +35,54 @@ using namespace std;
         uniquePermutations(nums, 0, ans);
         return ans;
     }
+
+// __________________________________________________________________________
+
+// Approach 2: use a frequency map to track counts of each unique number
+
+    void uniquePermutations2(vector<int>& nums, vector<int>& current, unordered_map<int, int>& freq, vector<vector<int>>& ans) {
+            
+            if (current.size() == nums.size()) {
+                ans.push_back(current);
+                
+                for(auto i: current) cout << i << " ";
+                cout << endl;
+                
+                return;
+            }
+            
+            for (auto& [num, count] : freq) {
+                if (count > 0) {
+                    // Choose this number
+                    current.push_back(num);
+                    freq[num]--;
+                    
+                    // Recurse
+                    uniquePermutations(nums, current, freq, ans);
+                    
+                    // Backtrack
+                    current.pop_back();
+                    freq[num]++;
+                }
+            }
+        }
+
+        vector<vector<int>> permuteUnique(vector<int>& nums) {
+            vector<vector<int>> ans;
+            vector<int> current;
+            unordered_map<int, int> freq;
+            
+            // Build frequency map
+            for (int num : nums)    freq[num]++;
+                 
+            uniquePermutations(nums, current, freq, ans);
+            return ans;
+        }
     
     
     int main(){
         vector<int> nums = {1,1,2,2};
         
-        sort(nums.begin(), nums.end());
-        
-        permuteUnique(nums);
-        
+        // permuteUnique(nums);
+        // permuteUnique2(nums);
     }
