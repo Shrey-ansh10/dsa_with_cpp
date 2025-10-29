@@ -20,7 +20,7 @@ void nextStep(int r, int c, vector<vector<int>>& mat, string path, vector<string
     //base case
     if(r==n-1 && c==n-1){
 
-        cout << path << endl;
+        // cout << path << endl;
         ans.push_back(path);
         return;
     }
@@ -54,7 +54,14 @@ int main(){
 
     vector<vector<int>> mat = {{1,0,0,0}, {1,1,0,1}, {1,1,0,0}, {0,1,1,1}};
     
-    findPath(mat);
+    vector<string> allPaths = findPath(mat);
+
+    if(allPaths.size() == 0) cout << "No possible paths found" << endl;
+    else{
+        for(int i=0; i<allPaths.size() ; i++){
+            cout << allPaths[i] << endl;
+        }
+    }
 
     return 0;
 }
