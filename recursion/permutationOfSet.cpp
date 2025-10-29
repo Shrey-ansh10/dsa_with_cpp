@@ -41,5 +41,5 @@ int main(){
 
     vector<int> nums = {1,2,3};
     permute(nums);
-
+    return 0;
 }
