@@ -4,20 +4,19 @@
 #include<vector>
 using namespace std;
 
-
 void mergeSort(vector<int>& arr, int st, int mid, int end){
-    vector<int> temp;
+    vector<int> temp; 
     int i=st, j=mid+1;
 
     while(i<=mid && j<=end){
-        if(arr[i] < arr[j]){
+        if(arr[i] < arr[j]){ // to sort in decending change the < to > and in the else if
             temp.push_back(arr[i]);
             i++;
-        }else if(arr[j] < arr[i]){
+        }else if(arr[j] < arr[i]){ // change < to >
             temp.push_back(arr[j]);
             j++;
         }
-        else{
+        else{ // handles cases when the array might have duplicate elements
             temp.push_back(arr[i]);
             temp.push_back(arr[j]);
             i++, j++;
@@ -40,8 +39,9 @@ void mergeSort(vector<int>& arr, int st, int mid, int end){
     }
 }
 
+// divide function divides the array into two halves
 vector<int> divide(vector<int>& arr, int st, int end){
-    if(st<end){
+    if(st<end){ // sereves as the base case and condition check
         int mid = st + (end-st)/2 ;
 
         divide(arr, st, mid); // left half
@@ -49,7 +49,6 @@ vector<int> divide(vector<int>& arr, int st, int end){
         divide(arr, mid+1, end); //right half
 
         mergeSort(arr, st, mid, end); // merge
-
     }
     return arr;
 }
@@ -64,6 +63,9 @@ int main(){
     for(int i : arr){ //print sorted array
         cout << i << " " << endl;
     }
+
+    // Time Complexity of Merge sort is : O(n * log_n)
+    // Space Complexity is : O(n)
 
     return 0;
 }
