@@ -71,3 +71,6 @@ int main(){
 
     return 0;
 }
+
+// memoization can help make this solution more optimal
+// DP will be the most optimal solution for this.
