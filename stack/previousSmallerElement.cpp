@@ -4,7 +4,7 @@
 #include<iostream>
 using namespace std;
 
-vector<int> prevGreaterElem(vector<int>& nums){
+vector<int> prevSmallerElem(vector<int>& nums){
 
     vector<int> ans(nums.size(), 0);
     stack<int> st;
