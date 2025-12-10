@@ -1,11 +1,9 @@
-// LC : Next Grester Element 2
-
+// LC 503: Next Greater Element 2
 
 #include<iostream>
 #include<vector>
 #include<stack>
 using namespace std;
-
 
 vector<int> nextGreaterElementInCircularArray(vector<int>& nums){
     int n = nums.size();
