@@ -16,10 +16,13 @@ public:
 
 
 class Queue{
-public:
+
+private:
     Node* head;
     Node* tail;
 
+public:
+    // constructor
     Queue(){
         head = tail = nullptr;
     }
@@ -42,12 +45,17 @@ public:
         if(head == nullptr){
             cout << "Queue is Empty" << endl;
             return ; 
-        }else{
-            Node* temp = head->next;
-            head = head->next;
-            delete temp;
+        }
+            
+        Node* temp = head;
+        head = head->next;
+
+        // after popping the last element - properly handeling tail pointer to mitigate program crash
+        if(head == nullptr){  // Queue is now empty
+        tail = nullptr;   // Reset tail to nullptr
         }
 
+        delete temp;
     }
 
     int front(){
@@ -60,8 +68,16 @@ public:
     }
 
     bool empty(){
-        if(head == nullptr) return true;
-        else return false;
+        return head == nullptr;
+    }
+
+    // destructor
+    ~Queue(){
+        while(head != nullptr){
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
     }
 };
 
