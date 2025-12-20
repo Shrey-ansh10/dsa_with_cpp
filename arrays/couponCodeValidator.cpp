@@ -97,7 +97,7 @@ int main() {
         cout << "Test 1: ";
         for(string s : result) cout << s << " ";
         cout << endl;
-        // Expected: SAVE10, DISCOUNT5, OFFER20, SALE30
+        // Expected: OFFER20, SAVE10, DISCOUNT5, SALE30
         // Sorted: electronics(SAVE10, OFFER20), grocery(DISCOUNT5), pharmacy(SALE30)
     }
     
@@ -111,7 +111,7 @@ int main() {
         cout << "Test 2: ";
         for(string s : result) cout << s << " ";
         cout << endl;
-        // Expected: CODE_123 (VALID_1 inactive, INV@LID invalid chars, test-123 inactive)
+        // Expected: CODE_123, VALID_1 ( INV@LID invalid chars, test-123 inactive)
     }
     
     // Test Case 3: Empty and special cases
@@ -137,8 +137,7 @@ int main() {
         cout << "Test 4: ";
         for(string s : result) cout << s << " ";
         cout << endl;
-        // Expected: ACOUPON, BCOUPON (electronics sorted A-Z), 
-        //           CCOUPON (grocery), ZCOUPON (restaurant)
+        // Expected: ACOUPON, BCOUPON, CCOUPON, ZCOUPON 
     }
     
     // Test Case 5: Mixed active/inactive
@@ -151,7 +150,7 @@ int main() {
         cout << "Test 5: ";
         for(string s : result) cout << s << " ";
         cout << endl;
-        // Expected: ACTIVE1, ACTIVE2 (INACTIVE1 filtered out)
+        // Expected: ACTIVE1, ACTIVE2
     }
     
     return 0;
