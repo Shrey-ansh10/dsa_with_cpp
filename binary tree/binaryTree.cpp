@@ -40,6 +40,15 @@ void preOrderTraversal(Node* root){ // O(n)
 
 }
 
+void inOrderTraversal(Node* root){ // O(n)
+
+    if(root == nullptr) return; // if root is null means this is the end, to return to parent node
+
+    preOrderTraversal(root->left); // recursive call on left subtree
+    cout << root->data << " "; // print the data at root
+    preOrderTraversal(root->right); // recursive call on right subtree
+}
+
 int main(){
 
     vector<int> preOrder = {2, 3, 4, -1, -1, 5, -1, -1, 7, -1, -1};
