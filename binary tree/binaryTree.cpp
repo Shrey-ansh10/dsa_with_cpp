@@ -109,6 +109,17 @@ int heightofBinarytree(Node* root){ //TC : O(n) as we visit every node in the tr
     return max(leftHeight, rightHeight)+1;
 }
 
+int countNodes(Node* root){
+
+    if(root == nullptr) return 0;
+
+    int leftCount = countNodes(root->left);
+    int rightCount = countNodes(root->right);
+
+    return leftCount+rightCount+1;
+}
+
+
 int main(){
 
     vector<int> preOrder = {2, 3, 4, -1, -1, 5, -1, -1, 7, -1, -1};
