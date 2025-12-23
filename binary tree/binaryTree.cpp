@@ -99,6 +99,16 @@ void levelOrderTraversal(Node* root){
 
 }
 
+int heightofBinarytree(Node* root){ //TC : O(n) as we visit every node in the tree
+
+    // base case 
+    if(root == nullptr) return 0;
+
+    int leftHeight = heightofBinarytree(root->left);
+    int rightHeight = heightofBinarytree(root->right);
+    return max(leftHeight, rightHeight)+1;
+}
+
 int main(){
 
     vector<int> preOrder = {2, 3, 4, -1, -1, 5, -1, -1, 7, -1, -1};
