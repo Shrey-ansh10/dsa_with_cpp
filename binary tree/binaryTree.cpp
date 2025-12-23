@@ -61,7 +61,43 @@ void postOrderTraversal(Node* root){ // O(n)
 // Pre, In & Post defines when we travers the ROOT node
 // Pre : we traverse root - left -right. root first
 // In : we traverse left-root-right. root in in center/2nd
-// Post : traverse left-right-root. root at last
+// Post : traverse left-right-root. root at last 
+
+
+// Level Order traversal - BFS on Binary Tree
+void levelOrderTraversal(Node* root){
+    queue<Node*> q; // will store nodes on same level in left->right order. Key to traverse all nodes at a level and then only proceed to next level
+    q.push(root); // initially push the root node to the queue
+
+    q.push(nullptr); // this to track new level of tree
+
+    while(!q.empty()){ // till the queue is empty - print the element at frond and add it's left and right child to queue
+        
+        Node* curr = q.front();
+        q.pop();
+
+        // this if statement is to track new level of the tree f
+        if(curr == nullptr){
+            if(!q.empty()){
+                cout << endl;
+                q.push(nullptr);
+                continue;
+            }else{
+                break;
+            }
+        }
+
+        cout << curr->data << " ";
+        
+        if(curr->left != nullptr){
+            q.push(curr->left); //push left child to queue
+        }
+        if(curr->right != nullptr){
+            q.push(curr->right); // push right child to queue
+        }
+    }
+
+}
 
 int main(){
 
