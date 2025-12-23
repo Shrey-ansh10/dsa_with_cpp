@@ -119,6 +119,16 @@ int countNodes(Node* root){
     return leftCount+rightCount+1;
 }
 
+// sum of nodes
+int sumOfNodes(Node* root){
+
+    if(root == nullptr) return 0;
+
+    int leftSum = sumOfNodes(root->left);
+    int rightSum = sumOfNodes(root->right);
+
+    return leftSum + rightSum + root->data;
+}
 
 int main(){
 
