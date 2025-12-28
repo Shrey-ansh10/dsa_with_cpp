@@ -78,8 +78,9 @@ void levelOrderTraversal(Node* root){
 
         // this if statement is to track new level of the tree f
         if(curr == nullptr){
-            if(!q.empty()){
-                cout << endl;
+            cout << endl;
+            
+            if(!q.empty()){    
                 q.push(nullptr);
                 continue;
             }else{
