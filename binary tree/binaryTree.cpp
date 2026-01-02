@@ -16,7 +16,7 @@ public:
 };
 
 // create a tree from preorder and return the root node - O(n) time
-Node* buildTree(vector<int>& preorder, int idx){
+Node* buildTree(vector<int>& preorder, int& idx){
     idx++;
 
     if(preorder[idx] == -1) return nullptr;
@@ -135,7 +135,8 @@ int main(){
 
     vector<int> preOrder = {2, 3, 4, -1, -1, 5, -1, -1, 7, -1, -1};
 
-    Node* root = buildTree(preOrder, -1); // will give idx -1 for start condition
+    int idx = -1;
+    Node* root = buildTree(preOrder, idx); // will give idx -1 for start condition
 
     preOrderTraversal(root);
  
